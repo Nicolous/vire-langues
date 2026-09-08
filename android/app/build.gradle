@@ -1,0 +1,72 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withInputStream { instr ->
+        localProperties.load(instr)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('sdk.dir')
+if (flutterRoot == null) {
+    def flutterDir = rootProject.file('.flutter')
+    def flutterFile = flutterDir.file('flutter.gradle')
+    if (flutterFile.exists()) {
+        new ByteArrayInputStream(flutterFile.text.encode()).withInputStream { instr ->
+            localProperties.load(instr)
+        }
+    }
+    flutterRoot = localProperties.getProperty('sdk.dir')
+    if (flutterRoot == null) {
+        flutterRoot = "${rootProject.projectDir}/../../../flutter"
+    } else {
+        flutterRoot = "${flutterRoot}"
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    namespace 'com.nicolous.virelangues'
+    compileSdkVersion flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "com.nicolous.virelangues"
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}

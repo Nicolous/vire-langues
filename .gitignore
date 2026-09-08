@@ -1,0 +1,65 @@
+# Flutter
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+
+# Android
+android/app/debug
+android/app/profile
+android/app/release
+android/app/.idea
+android/app/*.iml
+android/app/*.ipr
+android/app/*.iws
+android/.idea/
+android/*.iml
+android/*.ipr
+android/*.iws
+android/gradle.properties
+android/local.properties
+android/signing-report.txt
+
+# iOS
+ios/.vscode/
+ios/*.pbxuser
+ios/*.mode1v3
+ios/*.mode2v3
+ios/*.perspectivev3
+ios/*.xcworkspace
+ios/*.xcodeproj
+ios/Pods/
+ios/Flutter/
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/GeneratedPluginRegistrant.m
+
+# Hive
+.hive/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Pub
+.pub/
+.pub-cache/
+
+# Logs
+*.log
+
+# Dart
+.dart_tool/
+.artifacts/
