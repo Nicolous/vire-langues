@@ -38,7 +38,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace 'com.nicolous.virelangues'
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -48,6 +48,7 @@ android {
 
     buildFeatures {
         compose false
+        viewBinding false
     }
 
     defaultConfig {
