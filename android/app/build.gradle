@@ -70,6 +70,9 @@ android {
 
 flutter {
     source '../..'
+    android {
+        embeddingVersion '2'
+    }
 }
 
 dependencies {
