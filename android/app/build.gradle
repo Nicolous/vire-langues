@@ -46,6 +46,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    buildFeatures {
+        compose false
+    }
+
     defaultConfig {
         applicationId "com.nicolous.virelangues"
         minSdkVersion flutter.minSdkVersion
