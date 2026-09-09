@@ -33,7 +33,10 @@ jobs:
           channel: 'stable'
 
       - name: Force Android v2 embedding
-        run: echo "flutter.android.embeddingVersion=2" >> .flutter_settings
+        run: |
+          echo "flutter.android.embeddingVersion=2" >> .flutter_settings
+          mkdir -p .flutter
+          echo "android.embeddingVersion=2" >> .flutter/settings
 
       - name: Install dependencies
         run: flutter pub get
@@ -86,7 +89,10 @@ jobs:
           channel: 'stable'
 
       - name: Force Android v2 embedding
-        run: echo "flutter.android.embeddingVersion=2" >> .flutter_settings
+        run: |
+          echo "flutter.android.embeddingVersion=2" >> .flutter_settings
+          mkdir -p .flutter
+          echo "android.embeddingVersion=2" >> .flutter/settings
 
       - name: Install dependencies
         run: flutter pub get
