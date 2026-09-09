@@ -73,7 +73,7 @@ class StatisticsScreen extends ConsumerWidget {
                   color: AppColors.primary,
                 ),
                 StatCard(
-                  value: stats['maîtrisés']?.toString() ?? '0',
+                  value: stats['maitrises']?.toString() ?? '0',
                   label: 'Maîtrisés',
                   icon: Icons.star,
                   color: AppColors.success,
@@ -156,7 +156,7 @@ class StatisticsScreen extends ConsumerWidget {
     final hardCount = vireLangues.where((vl) => vl.difficulte == VireLangue.difficile).length;
 
     final easyMastered = progressions
-        .where((p) => p.maîtrisé)
+        .where((p) => p.maitrise)
         .where((p) {
           final vl = vireLangues.firstWhere((v) => v.id == p.vireLangueId, orElse: () => null);
           return vl != null && vl.difficulte == VireLangue.facile;
@@ -164,7 +164,7 @@ class StatisticsScreen extends ConsumerWidget {
         .length;
 
     final mediumMastered = progressions
-        .where((p) => p.maîtrisé)
+        .where((p) => p.maitrise)
         .where((p) {
           final vl = vireLangues.firstWhere((v) => v.id == p.vireLangueId, orElse: () => null);
           return vl != null && vl.difficulte == VireLangue.moyen;
@@ -172,7 +172,7 @@ class StatisticsScreen extends ConsumerWidget {
         .length;
 
     final hardMastered = progressions
-        .where((p) => p.maîtrisé)
+        .where((p) => p.maitrise)
         .where((p) {
           final vl = vireLangues.firstWhere((v) => v.id == p.vireLangueId, orElse: () => null);
           return vl != null && vl.difficulte == VireLangue.difficile;
@@ -344,7 +344,7 @@ class StatisticsScreen extends ConsumerWidget {
                           Text('${p.score}%'),
                         ],
                       ),
-                      trailing: p.maîtrisé 
+                      trailing: p.maitrise 
                           ? Icon(Icons.check_circle, color: AppColors.success)
                           : null,
                     ),
@@ -388,9 +388,9 @@ class StatisticsScreen extends ConsumerWidget {
       );
     }
 
-    // Trier par date de dernière pratique (les plus récents en premier)
+    // Trier par date de derniere pratique (les plus récents en premier)
     final sortedProgressions = [...progressions]
-      ..sort((a, b) => b.dernièrePratique.compareTo(a.dernièrePratique));
+      ..sort((a, b) => b.dernierePratique.compareTo(a.dernierePratique));
 
     return Card(
       elevation: 2,
@@ -410,7 +410,7 @@ class StatisticsScreen extends ConsumerWidget {
               final vl = vireLangues.firstWhere((v) => v.id == p.vireLangueId, orElse: () => null);
               if (vl == null) return const SizedBox.shrink();
               
-              final date = p.dernièrePratique;
+              final date = p.dernierePratique;
               final formattedDate = '${date.day}/${date.month}/${date.year}';
 
               return Padding(

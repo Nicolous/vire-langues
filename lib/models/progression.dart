@@ -14,7 +14,7 @@ class Progression {
   final int nombreRepetitions;
   
   @HiveField(3)
-  final DateTime dernièrePratique;
+  final DateTime dernierePratique;
   
   @HiveField(4)
   final DateTime? prochainePratique;
@@ -23,35 +23,35 @@ class Progression {
   final int score; // 0-100
   
   @HiveField(6)
-  final bool maîtrisé;
+  final bool maitrise;
 
   Progression({
     required this.id,
     required this.vireLangueId,
     this.nombreRepetitions = 0,
-    DateTime? dernièrePratique,
+    DateTime? dernierePratique,
     this.prochainePratique,
     this.score = 0,
-    this.maîtrisé = false,
-  }) : dernièrePratique = dernièrePratique ?? DateTime.now();
+    this.maitrise = false,
+  }) : dernierePratique = dernierePratique ?? DateTime.now();
 
   Progression copyWith({
     String? id,
     String? vireLangueId,
     int? nombreRepetitions,
-    DateTime? dernièrePratique,
+    DateTime? dernierePratique,
     DateTime? prochainePratique,
     int? score,
-    bool? maîtrisé,
+    bool? maitrise,
   }) {
     return Progression(
       id: id ?? this.id,
       vireLangueId: vireLangueId ?? this.vireLangueId,
       nombreRepetitions: nombreRepetitions ?? this.nombreRepetitions,
-      dernièrePratique: dernièrePratique ?? this.dernièrePratique,
+      dernierePratique: dernierePratique ?? this.dernierePratique,
       prochainePratique: prochainePratique ?? this.prochainePratique,
       score: score ?? this.score,
-      maîtrisé: maîtrisé ?? this.maîtrisé,
+      maitrise: maitrise ?? this.maitrise,
     );
   }
 
@@ -60,10 +60,10 @@ class Progression {
       'id': id,
       'vireLangueId': vireLangueId,
       'nombreRepetitions': nombreRepetitions,
-      'dernièrePratique': dernièrePratique.toIso8601String(),
+      'dernierePratique': dernierePratique.toIso8601String(),
       'prochainePratique': prochainePratique?.toIso8601String(),
       'score': score,
-      'maîtrisé': maîtrisé,
+      'maitrise': maitrise,
     };
   }
 
@@ -72,16 +72,16 @@ class Progression {
       id: map['id'] ?? '',
       vireLangueId: map['vireLangueId'] ?? '',
       nombreRepetitions: map['nombreRepetitions'] ?? 0,
-      dernièrePratique: DateTime.tryParse(map['dernièrePratique'] ?? '') ?? DateTime.now(),
+      dernierePratique: DateTime.tryParse(map['dernierePratique'] ?? '') ?? DateTime.now(),
       prochainePratique: DateTime.tryParse(map['prochainePratique'] ?? ''),
       score: map['score'] ?? 0,
-      maîtrisé: map['maîtrisé'] ?? false,
+      maitrise: map['maitrise'] ?? false,
     );
   }
 
   // Calculer le niveau de progression (0-5 étoiles)
   int get niveau {
-    if (maîtrisé) return 5;
+    if (maitrise) return 5;
     if (score >= 80) return 4;
     if (score >= 60) return 3;
     if (score >= 40) return 2;

@@ -407,7 +407,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
       vireLangueId: widget.vireLangue.id,
       nombreRepetitions: _repetitions,
       score: _score,
-      maîtrisé: _score >= 90,
+      maitrise: _score >= 90,
     );
 
     // Afficher un message de confirmation

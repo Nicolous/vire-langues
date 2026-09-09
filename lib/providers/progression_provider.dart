@@ -65,20 +65,20 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
   Progression createOrUpdate({
     required String vireLangueId,
     int? nombreRepetitions,
-    DateTime? dernièrePratique,
+    DateTime? dernierePratique,
     DateTime? prochainePratique,
     int? score,
-    bool? maîtrisé,
+    bool? maitrise,
   }) {
     final existing = getByVireLangueId(vireLangueId);
     
     if (existing != null) {
       final updated = existing.copyWith(
         nombreRepetitions: nombreRepetitions ?? existing.nombreRepetitions + 1,
-        dernièrePratique: dernièrePratique ?? DateTime.now(),
+        dernierePratique: dernierePratique ?? DateTime.now(),
         prochainePratique: prochainePratique,
         score: score ?? existing.score,
-        maîtrisé: maîtrisé ?? existing.maîtrisé,
+        maitrise: maitrise ?? existing.maitrise,
       );
       update(updated);
       return updated;
@@ -88,10 +88,10 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
         id: id,
         vireLangueId: vireLangueId,
         nombreRepetitions: nombreRepetitions ?? 1,
-        dernièrePratique: dernièrePratique ?? DateTime.now(),
+        dernierePratique: dernierePratique ?? DateTime.now(),
         prochainePratique: prochainePratique,
         score: score ?? 0,
-        maîtrisé: maîtrisé ?? false,
+        maitrise: maitrise ?? false,
       );
       add(progression);
       return progression;
@@ -104,7 +104,7 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
     if (progression != null) {
       update(progression.copyWith(
         nombreRepetitions: progression.nombreRepetitions + 1,
-        dernièrePratique: DateTime.now(),
+        dernierePratique: DateTime.now(),
       ));
     } else {
       createOrUpdate(vireLangueId: vireLangueId);
@@ -117,29 +117,29 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
     if (progression != null) {
       update(progression.copyWith(
         score: newScore,
-        maîtrisé: newScore >= 90,
+        maitrise: newScore >= 90,
       ));
     } else {
       createOrUpdate(
         vireLangueId: vireLangueId,
         score: newScore,
-        maîtrisé: newScore >= 90,
+        maitrise: newScore >= 90,
       );
     }
   }
 
-  // Marquer comme maîtrisé
+  // Marquer comme maitrise
   void markAsMastered(String vireLangueId) {
     final progression = getByVireLangueId(vireLangueId);
     if (progression != null) {
       update(progression.copyWith(
-        maîtrisé: true,
+        maitrise: true,
         score: 100,
       ));
     } else {
       createOrUpdate(
         vireLangueId: vireLangueId,
-        maîtrisé: true,
+        maitrise: true,
         score: 100,
       );
     }
@@ -148,16 +148,16 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
   // Obtenir les statistiques globales
   Map<String, dynamic> getStatistics() {
     final total = state.length;
-    final maîtrisés = state.where((p) => p.maîtrisé).length;
+    final maitrises = state.where((p) => p.maitrise).length;
     final scoreMoyen = total > 0 
         ? state.fold(0, (sum, p) => sum + p.score) / total 
         : 0;
     
     return {
       'total': total,
-      'maîtrisés': maîtrisés,
+      'maitrises': maitrises,
       'scoreMoyen': scoreMoyen.round(),
-      'pourcentageMaîtrisé': total > 0 ? (maîtrisés / total * 100).round() : 0,
+      'pourcentageMaîtrisé': total > 0 ? (maitrises / total * 100).round() : 0,
     };
   }
 
@@ -184,18 +184,18 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
     
     // Vérifier si au moins un vire-langue a été pratiqué aujourd'hui
     final pratiquéAujourdhui = state.any((p) => 
-      p.dernièrePratique.year == now.year &&
-      p.dernièrePratique.month == now.month &&
-      p.dernièrePratique.day == now.day
+      p.dernierePratique.year == now.year &&
+      p.dernierePratique.month == now.month &&
+      p.dernierePratique.day == now.day
     );
     
     if (!pratiquéAujourdhui) return 0;
     
     // Vérifier hier
     final pratiquéHier = state.any((p) => 
-      p.dernièrePratique.year == yesterday.year &&
-      p.dernièrePratique.month == yesterday.month &&
-      p.dernièrePratique.day == yesterday.day
+      p.dernierePratique.year == yesterday.year &&
+      p.dernierePratique.month == yesterday.month &&
+      p.dernierePratique.day == yesterday.day
     );
     
     if (!pratiquéHier) return 1;
@@ -206,9 +206,9 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
     
     while (true) {
       final pratiqué = state.any((p) => 
-        p.dernièrePratique.year == current.year &&
-        p.dernièrePratique.month == current.month &&
-        p.dernièrePratique.day == current.day
+        p.dernierePratique.year == current.year &&
+        p.dernierePratique.month == current.month &&
+        p.dernierePratique.day == current.day
       );
       
       if (!pratiqué) break;

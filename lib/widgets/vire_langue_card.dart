@@ -90,7 +90,7 @@ class VireLangueCard extends StatelessWidget {
                 const SizedBox(height: 8),
                 
                 // Indicateur de maîtrise
-                if (progression.maîtrisé) ...[
+                if (progression.maitrise) ...[
                   Chip(
                     label: const Text('Maîtrisé'),
                     backgroundColor: AppColors.success.withOpacity(0.2),

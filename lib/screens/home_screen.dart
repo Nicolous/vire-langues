@@ -155,7 +155,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   color: AppColors.primary,
                 ),
                 StatCard(
-                  value: stats['maîtrisés']?.toString() ?? '0',
+                  value: stats['maitrises']?.toString() ?? '0',
                   label: 'Maîtrisés',
                   icon: Icons.star,
                   color: AppColors.success,
@@ -275,9 +275,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       return const SizedBox.shrink();
     }
 
-    // Trier par date de dernière pratique (les plus récents en premier)
+    // Trier par date de derniere pratique (les plus récents en premier)
     final sortedProgressions = [...progressions]
-      ..sort((a, b) => b.dernièrePratique.compareTo(a.dernièrePratique));
+      ..sort((a, b) => b.dernierePratique.compareTo(a.dernierePratique));
 
     final recentProgressions = sortedProgressions.take(3).toList();
 

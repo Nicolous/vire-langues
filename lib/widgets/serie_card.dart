@@ -33,7 +33,7 @@ class SerieCard extends StatelessWidget {
         ? serieVireLangues.fold(0, (sum, vl) => sum + vl.difficulte) / serieVireLangues.length
         : 0;
 
-    // Calculer le nombre de vire-langues maîtrisés
+    // Calculer le nombre de vire-langues maitrises
     final masteredCount = 0; // TODO: Implémenter avec les données de progression
 
     return Card(
