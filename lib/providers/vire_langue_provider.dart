@@ -14,21 +14,21 @@ final vireLanguesProvider = Provider<List<VireLangue>>((ref) {
   return box.values.toList();
 });
 
-// Provider pour les vire-langues par catégorie
+// Provider pour les vire-langues par categorie
 final vireLanguesParCategorieProvider = 
     Provider.family<List<VireLangue>, String>((ref, categorie) {
   final vireLangues = ref.watch(vireLanguesProvider);
   return vireLangues.where((vl) => vl.categorie == categorie).toList();
 });
 
-// Provider pour les vire-langues par difficulté
+// Provider pour les vire-langues par difficulte
 final vireLanguesParDifficulteProvider = 
     Provider.family<List<VireLangue>, int>((ref, difficulte) {
   final vireLangues = ref.watch(vireLanguesProvider);
   return vireLangues.where((vl) => vl.difficulte == difficulte).toList();
 });
 
-// Notifier pour gérer les vire-langues
+// Notifier pour gerer les vire-langues
 class VireLangueNotifier extends StateNotifier<List<VireLangue>> {
   final Box<VireLangue> _box;
   
@@ -40,7 +40,7 @@ class VireLangueNotifier extends StateNotifier<List<VireLangue>> {
     state = _box.values.toList();
   }
 
-  // Mettre à jour un vire-langue
+  // Mettre a jour un vire-langue
   void update(VireLangue vireLangue) {
     _box.put(vireLangue.id, vireLangue);
     state = _box.values.toList();
@@ -57,7 +57,7 @@ class VireLangueNotifier extends StateNotifier<List<VireLangue>> {
     return _box.get(id);
   }
 
-  // Créer un vire-langue avec un ID auto-généré
+  // Creer un vire-langue avec un ID auto-genere
   VireLangue create({
     required String texte,
     required int difficulte,
@@ -76,7 +76,7 @@ class VireLangueNotifier extends StateNotifier<List<VireLangue>> {
     return vireLangue;
   }
 
-  // Obtenir un vire-langue aléatoire
+  // Obtenir un vire-langue aleatoire
   VireLangue? getRandom() {
     if (state.isEmpty) return null;
     final index = DateTime.now().millisecondsSinceEpoch % state.length;

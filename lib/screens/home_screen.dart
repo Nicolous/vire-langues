@@ -64,7 +64,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.format_list_numbered),
-            label: 'Séries',
+            label: 'Series',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.analytics),
@@ -74,7 +74,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Naviguer vers la pratique avec un vire-langue aléatoire
+          // Naviguer vers la pratique avec un vire-langue aleatoire
           final randomVireLangue = ref.read(vireLangueNotifierProvider.notifier).getRandom();
           if (randomVireLangue != null) {
             Navigator.push(
@@ -120,11 +120,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           _buildVireLangueDuJour(vireLangues),
           const SizedBox(height: 24),
 
-          // Derniers pratiqués
+          // Derniers pratiques
           _buildDerniersPratiques(),
           const SizedBox(height: 24),
 
-          // Catégories
+          // Categories
           _buildCategoriesSection(),
         ],
       ),
@@ -156,7 +156,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
                 StatCard(
                   value: stats['maitrises']?.toString() ?? '0',
-                  label: 'Maîtrisés',
+                  label: 'Maîtrises',
                   icon: Icons.star,
                   color: AppColors.success,
                 ),
@@ -170,13 +170,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(height: 16),
             LinearProgressIndicator(
-              value: (stats['pourcentageMaîtrisé'] ?? 0) / 100,
+              value: (stats['pourcentageMaîtrise'] ?? 0) / 100,
               backgroundColor: Colors.grey[200],
               valueColor: const AlwaysStoppedAnimation<Color>(AppColors.success),
             ),
             const SizedBox(height: 8),
             Text(
-              'Progression globale: ${stats['pourcentageMaîtrisé']?.round() ?? 0}%',
+              'Progression globale: ${stats['pourcentageMaîtrise']?.round() ?? 0}%',
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.center,
             ),
@@ -191,7 +191,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       return const SizedBox.shrink();
     }
 
-    // Obtenir un vire-langue aléatoire pour aujourd'hui
+    // Obtenir un vire-langue aleatoire pour aujourd'hui
     final today = DateTime.now();
     final seed = today.year * 365 + today.month * 30 + today.day;
     final index = seed % vireLangues.length;
@@ -275,7 +275,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       return const SizedBox.shrink();
     }
 
-    // Trier par date de derniere pratique (les plus récents en premier)
+    // Trier par date de derniere pratique (les plus recents en premier)
     final sortedProgressions = [...progressions]
       ..sort((a, b) => b.dernierePratique.compareTo(a.dernierePratique));
 
@@ -285,7 +285,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          'Derniers Pratiqués',
+          'Derniers Pratiques',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -326,7 +326,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          'Catégories',
+          'Categories',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
           ),

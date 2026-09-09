@@ -1,4 +1,4 @@
-// Export de tous les écrans pour une importation centralisée
+// Export de tous les ecrans pour une importation centralisee
 
 export 'splash_screen.dart';
 export 'home_screen.dart';

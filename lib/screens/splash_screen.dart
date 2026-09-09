@@ -19,13 +19,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
 
   Future<void> _initializeApp() async {
-    // Initialiser les données par défaut
+    // Initialiser les donnees par defaut
     await DataService().initializeDefaultData(ref);
     
     // Attendre un peu pour l'effet de splash screen
     await Future.delayed(const Duration(seconds: 2));
     
-    // Naviguer vers l'écran d'accueil
+    // Naviguer vers l'ecran d'accueil
     if (mounted) {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
@@ -81,7 +81,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
               
               // Sous-titre
               Text(
-                'Améliorez votre élocution',
+                'Ameliorez votre elocution',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Colors.white.withOpacity(0.9),
                   fontWeight: FontWeight.w400,

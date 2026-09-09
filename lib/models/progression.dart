@@ -79,7 +79,7 @@ class Progression {
     );
   }
 
-  // Calculer le niveau de progression (0-5 étoiles)
+  // Calculer le niveau de progression (0-5 etoiles)
   int get niveau {
     if (maitrise) return 5;
     if (score >= 80) return 4;

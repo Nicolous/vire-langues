@@ -4,7 +4,7 @@ import 'package:vire_langues/models/serie.dart';
 import 'package:vire_langues/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// Service pour initialiser les données par défaut
+/// Service pour initialiser les donnees par defaut
 class DataService {
   static final DataService _instance = DataService._internal();
   
@@ -12,7 +12,7 @@ class DataService {
   
   DataService._internal();
 
-  // Liste des vire-langues par défaut
+  // Liste des vire-langues par defaut
   static const List<Map<String, dynamic>> _defaultVireLangues = [
     // Classiques - Facile
     {
@@ -27,7 +27,7 @@ class DataService {
       'categorie': 'Classiques',
     },
     {
-      'texte': 'Ton thé t\'a-t-il ôté ta toux ? Oui, mon thé m\'a ôté ma toux.',
+      'texte': 'Ton the t\'a-t-il ôte ta toux ? Oui, mon the m\'a ôte ma toux.',
       'difficulte': VireLangue.facile,
       'categorie': 'Classiques',
     },
@@ -49,7 +49,7 @@ class DataService {
       'categorie': 'Classiques',
     },
     {
-      'texte': 'Gros gras grand grain d\'orge, quand te dé-gros-gras-grand-grain-d\'orge-ifieras-tu ?',
+      'texte': 'Gros gras grand grain d\'orge, quand te de-gros-gras-grand-grain-d\'orge-ifieras-tu ?',
       'difficulte': VireLangue.moyen,
       'categorie': 'Classiques',
     },
@@ -83,7 +83,7 @@ class DataService {
       'categorie': 'Drôles',
     },
     {
-      'texte': 'Un dragon gradé dégrade un dragon gradé.',
+      'texte': 'Un dragon grade degrade un dragon grade.',
       'difficulte': VireLangue.facile,
       'categorie': 'Drôles',
     },
@@ -95,7 +95,7 @@ class DataService {
       'categorie': 'Drôles',
     },
     {
-      'texte': 'Le thérapeute thérapeuthe thérapeutise le thérapeute.',
+      'texte': 'Le therapeute therapeuthe therapeutise le therapeute.',
       'difficulte': VireLangue.moyen,
       'categorie': 'Drôles',
     },
@@ -126,7 +126,7 @@ class DataService {
     
     // Animaux - Moyen
     {
-      'texte': 'Trois tortues trottinent sur un trottoir très étroit.',
+      'texte': 'Trois tortues trottinent sur un trottoir très etroit.',
       'difficulte': VireLangue.moyen,
       'categorie': 'Animaux',
     },
@@ -167,7 +167,7 @@ class DataService {
       'categorie': 'Nourriture',
     },
     {
-      'texte': 'Pauvre petit pain percé, prends patience pour être pétris.',
+      'texte': 'Pauvre petit pain perce, prends patience pour être petris.',
       'difficulte': VireLangue.moyen,
       'categorie': 'Nourriture',
     },
@@ -186,7 +186,7 @@ class DataService {
       'categorie': 'Voyage',
     },
     {
-      'texte': 'Je vais à la ville, je viens de la ville.',
+      'texte': 'Je vais a la ville, je viens de la ville.',
       'difficulte': VireLangue.facile,
       'categorie': 'Voyage',
     },
@@ -205,14 +205,14 @@ class DataService {
     
     // Voyage - Difficile
     {
-      'texte': 'Le mur de la ville de Paris est muré par les murs de la ville de Paris.',
+      'texte': 'Le mur de la ville de Paris est mure par les murs de la ville de Paris.',
       'difficulte': VireLangue.difficile,
       'categorie': 'Voyage',
     },
     
     // Personnages - Facile
     {
-      'texte': 'Louis loue une loyer loué par Louis.',
+      'texte': 'Louis loue une loyer loue par Louis.',
       'difficulte': VireLangue.facile,
       'categorie': 'Personnages',
     },
@@ -229,39 +229,39 @@ class DataService {
       'categorie': 'Personnages',
     },
     {
-      'texte': 'Jean jeûne à jeun, jeûne Jean à jeun.',
+      'texte': 'Jean jeûne a jeun, jeûne Jean a jeun.',
       'difficulte': VireLangue.moyen,
       'categorie': 'Personnages',
     },
     
     // Personnages - Difficile
     {
-      'texte': 'Le thérapeute thérapeuthe thérapeutise le thérapeute thérapeuthe.',
+      'texte': 'Le therapeute therapeuthe therapeutise le therapeute therapeuthe.',
       'difficulte': VireLangue.difficile,
       'categorie': 'Personnages',
     },
   ];
 
-  // Séries par défaut
+  // Series par defaut
   static const List<Map<String, dynamic>> _defaultSeries = [
     {
-      'nom': 'Débutant - Classiques',
-      'description': 'Une sélection de vire-langues classiques pour débuter.',
+      'nom': 'Debutant - Classiques',
+      'description': 'Une selection de vire-langues classiques pour debuter.',
       'vireLangueIds': [
         '0001', '0002', '0003', '0004',
       ],
       'estPersonnalisee': false,
     },
     {
-      'nom': 'Intermédiaire - Classiques',
-      'description': 'Des vire-langues classiques de difficulté moyenne.',
+      'nom': 'Intermediaire - Classiques',
+      'description': 'Des vire-langues classiques de difficulte moyenne.',
       'vireLangueIds': [
         '0005', '0006', '0007', '0008',
       ],
       'estPersonnalisee': false,
     },
     {
-      'nom': 'Avancé - Classiques',
+      'nom': 'Avance - Classiques',
       'description': 'Les vire-langues classiques les plus difficiles.',
       'vireLangueIds': [
         '0009', '0010', '0011',
@@ -270,7 +270,7 @@ class DataService {
     },
     {
       'nom': 'Mix Drôles',
-      'description': 'Une sélection de vire-langues drôles de toutes difficultés.',
+      'description': 'Une selection de vire-langues drôles de toutes difficultes.',
       'vireLangueIds': [
         '0012', '0013', '0014', '0015', '0016',
       ],
@@ -285,25 +285,25 @@ class DataService {
       'estPersonnalisee': false,
     },
     {
-      'nom': 'Défi Complet',
+      'nom': 'Defi Complet',
       'description': 'Tous les vire-langues pour un entraînement complet.',
       'vireLangueIds': [], // Sera rempli dynamiquement
       'estPersonnalisee': false,
     },
   ];
 
-  /// Initialiser les données par défaut si elles n'existent pas
+  /// Initialiser les donnees par defaut si elles n'existent pas
   Future<void> initializeDefaultData(WidgetRef ref) async {
     final vireLangueNotifier = ref.read(vireLangueNotifierProvider.notifier);
     final serieNotifier = ref.read(serieNotifierProvider.notifier);
     
-    // Vérifier si des vire-langues existent déjà
+    // Verifier si des vire-langues existent deja
     final vireLangues = ref.read(vireLanguesProvider);
     
     if (vireLangues.isEmpty) {
-      debugPrint('Initialisation des vire-langues par défaut...');
+      debugPrint('Initialisation des vire-langues par defaut...');
       
-      // Ajouter les vire-langues par défaut
+      // Ajouter les vire-langues par defaut
       for (var i = 0; i < _defaultVireLangues.length; i++) {
         final data = _defaultVireLangues[i];
         final id = 'VL${(i + 1).toString().padLeft(4, '0')}';
@@ -316,30 +316,30 @@ class DataService {
         );
       }
       
-      debugPrint('Vire-langues par défaut ajoutés.');
+      debugPrint('Vire-langues par defaut ajoutes.');
     }
     
-    // Vérifier si des séries existent déjà
+    // Verifier si des series existent deja
     final series = ref.read(seriesProvider);
     
     if (series.isEmpty) {
-      debugPrint('Initialisation des séries par défaut...');
+      debugPrint('Initialisation des series par defaut...');
       
-      // Obtenir tous les vire-langues pour la série complète
+      // Obtenir tous les vire-langues pour la serie complète
       final allVireLangues = ref.read(vireLanguesProvider);
       final allIds = allVireLangues.map((vl) => vl.id).toList();
       
-      // Ajouter les séries par défaut
+      // Ajouter les series par defaut
       for (var i = 0; i < _defaultSeries.length; i++) {
         final data = _defaultSeries[i];
         final id = 'S${(i + 1).toString().padLeft(4, '0')}';
         
-        // Pour la série complète, utiliser tous les IDs
+        // Pour la serie complète, utiliser tous les IDs
         final vireLangueIds = data['vireLangueIds'] is List 
             ? List<String>.from(data['vireLangueIds'])
             : allIds;
         
-        // Créer la série avec des IDs valides
+        // Creer la serie avec des IDs valides
         final validIds = vireLangueIds
             .where((id) => allVireLangues.any((vl) => vl.id == id))
             .toList();
@@ -354,25 +354,25 @@ class DataService {
         }
       }
       
-      debugPrint('Séries par défaut ajoutées.');
+      debugPrint('Series par defaut ajoutees.');
     }
   }
 
-  /// Réinitialiser toutes les données
+  /// Reinitialiser toutes les donnees
   Future<void> resetAllData(WidgetRef ref) async {
     final vireLangueBox = ref.read(vireLangueBoxProvider);
     final serieBox = ref.read(serieBoxProvider);
     final progressionBox = ref.read(progressionBoxProvider);
     
-    // Supprimer toutes les données
+    // Supprimer toutes les donnees
     await vireLangueBox.clear();
     await serieBox.clear();
     await progressionBox.clear();
     
-    debugPrint('Toutes les données ont été réinitialisées.');
+    debugPrint('Toutes les donnees ont ete reinitialisees.');
   }
 
-  /// Obtenir les statistiques des données
+  /// Obtenir les statistiques des donnees
   Map<String, dynamic> getDataStatistics(WidgetRef ref) {
     final vireLangues = ref.read(vireLanguesProvider);
     final series = ref.read(seriesProvider);

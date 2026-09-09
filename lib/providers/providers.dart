@@ -1,4 +1,4 @@
-// Export de tous les providers pour une importation centralisée
+// Export de tous les providers pour une importation centralisee
 
 export 'vire_langue_provider.dart';
 export 'serie_provider.dart';

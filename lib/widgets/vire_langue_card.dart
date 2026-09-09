@@ -43,7 +43,7 @@ class VireLangueCard extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               
-              // Catégorie et difficulté
+              // Categorie et difficulte
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -92,7 +92,7 @@ class VireLangueCard extends StatelessWidget {
                 // Indicateur de maîtrise
                 if (progression.maitrise) ...[
                   Chip(
-                    label: const Text('Maîtrisé'),
+                    label: const Text('Maîtrise'),
                     backgroundColor: AppColors.success.withOpacity(0.2),
                     labelStyle: const TextStyle(color: AppColors.success),
                     avatar: const Icon(Icons.check_circle, color: AppColors.success, size: 16),

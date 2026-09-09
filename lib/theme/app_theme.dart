@@ -14,7 +14,7 @@ class AppColors {
   static const onSurface = Color(0xFF000000);
   static const onError = Color(0xFFFFFFFF);
   
-  // Couleurs personnalisées
+  // Couleurs personnalisees
   static const accent = Color(0xFFFF6B6B);
   static const success = Color(0xFF4CAF50);
   static const warning = Color(0xFFFFC107);

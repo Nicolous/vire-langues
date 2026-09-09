@@ -15,7 +15,7 @@ final progressionsProvider = Provider<List<Progression>>((ref) {
   return box.values.toList();
 });
 
-// Provider pour la progression d'un vire-langue spécifique
+// Provider pour la progression d'un vire-langue specifique
 final progressionProvider = Provider.family<Progression?, String>((ref, vireLangueId) {
   final progressions = ref.watch(progressionsProvider);
   return progressions.firstWhere(
@@ -24,7 +24,7 @@ final progressionProvider = Provider.family<Progression?, String>((ref, vireLang
   );
 });
 
-// Notifier pour gérer les progressions
+// Notifier pour gerer les progressions
 class ProgressionNotifier extends StateNotifier<List<Progression>> {
   final Box<Progression> _box;
   
@@ -36,7 +36,7 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
     state = _box.values.toList();
   }
 
-  // Mettre à jour une progression
+  // Mettre a jour une progression
   void update(Progression progression) {
     _box.put(progression.id, progression);
     state = _box.values.toList();
@@ -61,7 +61,7 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
     );
   }
 
-  // Créer ou mettre à jour la progression pour un vire-langue
+  // Creer ou mettre a jour la progression pour un vire-langue
   Progression createOrUpdate({
     required String vireLangueId,
     int? nombreRepetitions,
@@ -98,7 +98,7 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
     }
   }
 
-  // Incrémenter le compteur de répétitions
+  // Incrementer le compteur de repetitions
   void incrementRepetitions(String vireLangueId) {
     final progression = getByVireLangueId(vireLangueId);
     if (progression != null) {
@@ -111,7 +111,7 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
     }
   }
 
-  // Mettre à jour le score
+  // Mettre a jour le score
   void updateScore(String vireLangueId, int newScore) {
     final progression = getByVireLangueId(vireLangueId);
     if (progression != null) {
@@ -157,61 +157,61 @@ class ProgressionNotifier extends StateNotifier<List<Progression>> {
       'total': total,
       'maitrises': maitrises,
       'scoreMoyen': scoreMoyen.round(),
-      'pourcentageMaîtrisé': total > 0 ? (maitrises / total * 100).round() : 0,
+      'pourcentageMaîtrise': total > 0 ? (maitrises / total * 100).round() : 0,
     };
   }
 
-  // Obtenir les vire-langues les plus pratiqués
+  // Obtenir les vire-langues les plus pratiques
   List<Progression> getMostPracticed(int limit) {
     return [...state]
       ..sort((a, b) => b.nombreRepetitions.compareTo(a.nombreRepetitions))
       ..take(limit);
   }
 
-  // Obtenir les vire-langues les mieux notés
+  // Obtenir les vire-langues les mieux notes
   List<Progression> getHighestRated(int limit) {
     return [...state]
       ..sort((a, b) => b.score.compareTo(a.score))
       ..take(limit);
   }
 
-  // Obtenir le streak actuel (nombre de jours consécutifs de pratique)
+  // Obtenir le streak actuel (nombre de jours consecutifs de pratique)
   int getCurrentStreak() {
     if (state.isEmpty) return 0;
     
     final now = DateTime.now();
     final yesterday = now.subtract(const Duration(days: 1));
     
-    // Vérifier si au moins un vire-langue a été pratiqué aujourd'hui
-    final pratiquéAujourdhui = state.any((p) => 
+    // Verifier si au moins un vire-langue a ete pratique aujourd'hui
+    final pratiqueAujourdhui = state.any((p) => 
       p.dernierePratique.year == now.year &&
       p.dernierePratique.month == now.month &&
       p.dernierePratique.day == now.day
     );
     
-    if (!pratiquéAujourdhui) return 0;
+    if (!pratiqueAujourdhui) return 0;
     
-    // Vérifier hier
-    final pratiquéHier = state.any((p) => 
+    // Verifier hier
+    final pratiqueHier = state.any((p) => 
       p.dernierePratique.year == yesterday.year &&
       p.dernierePratique.month == yesterday.month &&
       p.dernierePratique.day == yesterday.day
     );
     
-    if (!pratiquéHier) return 1;
+    if (!pratiqueHier) return 1;
     
-    // Continuer à remonter
+    // Continuer a remonter
     int streak = 2;
     DateTime current = yesterday.subtract(const Duration(days: 1));
     
     while (true) {
-      final pratiqué = state.any((p) => 
+      final pratique = state.any((p) => 
         p.dernierePratique.year == current.year &&
         p.dernierePratique.month == current.month &&
         p.dernierePratique.day == current.day
       );
       
-      if (!pratiqué) break;
+      if (!pratique) break;
       
       streak++;
       current = current.subtract(const Duration(days: 1));

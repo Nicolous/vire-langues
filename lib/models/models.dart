@@ -1,4 +1,4 @@
-// Export de tous les modèles pour une importation centralisée
+// Export de tous les modèles pour une importation centralisee
 
 export 'vire_langue.dart';
 export 'serie.dart';

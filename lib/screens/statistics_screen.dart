@@ -33,7 +33,7 @@ class StatisticsScreen extends ConsumerWidget {
             _buildStreakCard(progressionNotifier),
             const SizedBox(height: 24),
 
-            // Répartition par difficulté
+            // Repartition par difficulte
             _buildDifficultyDistribution(vireLangues, progressions),
             const SizedBox(height: 24),
 
@@ -68,13 +68,13 @@ class StatisticsScreen extends ConsumerWidget {
               children: [
                 StatCard(
                   value: stats['total']?.toString() ?? '0',
-                  label: 'Total Pratiqués',
+                  label: 'Total Pratiques',
                   icon: Icons.format_list_numbered,
                   color: AppColors.primary,
                 ),
                 StatCard(
                   value: stats['maitrises']?.toString() ?? '0',
-                  label: 'Maîtrisés',
+                  label: 'Maîtrises',
                   icon: Icons.star,
                   color: AppColors.success,
                 ),
@@ -88,13 +88,13 @@ class StatisticsScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             LinearProgressIndicator(
-              value: (stats['pourcentageMaîtrisé'] ?? 0) / 100,
+              value: (stats['pourcentageMaîtrise'] ?? 0) / 100,
               backgroundColor: Colors.grey[200],
               valueColor: const AlwaysStoppedAnimation<Color>(AppColors.success),
             ),
             const SizedBox(height: 8),
             Text(
-              'Progression globale: ${stats['pourcentageMaîtrisé']?.round() ?? 0}%',
+              'Progression globale: ${stats['pourcentageMaîtrise']?.round() ?? 0}%',
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.center,
             ),
@@ -128,7 +128,7 @@ class StatisticsScreen extends ConsumerWidget {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Text(
-                    '$streak jour${streak > 1 ? 's' : ''} de pratique consécutifs',
+                    '$streak jour${streak > 1 ? 's' : ''} de pratique consecutifs',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: streak > 0 ? AppColors.success : Colors.grey,
@@ -187,7 +187,7 @@ class StatisticsScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Répartition par Difficulté',
+              'Repartition par Difficulte',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -262,7 +262,7 @@ class StatisticsScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Les plus pratiqués
+        // Les plus pratiques
         Card(
           elevation: 2,
           child: Padding(
@@ -271,7 +271,7 @@ class StatisticsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Les plus Pratiqués',
+                  'Les plus Pratiques',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -310,7 +310,7 @@ class StatisticsScreen extends ConsumerWidget {
         ),
         const SizedBox(height: 16),
         
-        // Les mieux notés
+        // Les mieux notes
         Card(
           elevation: 2,
           child: Padding(
@@ -319,7 +319,7 @@ class StatisticsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Les mieux Notés',
+                  'Les mieux Notes',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -378,7 +378,7 @@ class StatisticsScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'Commencez à pratiquer pour voir votre historique.',
+                'Commencez a pratiquer pour voir votre historique.',
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
@@ -388,7 +388,7 @@ class StatisticsScreen extends ConsumerWidget {
       );
     }
 
-    // Trier par date de derniere pratique (les plus récents en premier)
+    // Trier par date de derniere pratique (les plus recents en premier)
     final sortedProgressions = [...progressions]
       ..sort((a, b) => b.dernierePratique.compareTo(a.dernierePratique));
 
@@ -400,7 +400,7 @@ class StatisticsScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Historique Récent',
+              'Historique Recent',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

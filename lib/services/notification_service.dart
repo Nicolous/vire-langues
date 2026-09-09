@@ -14,15 +14,15 @@ class NotificationService {
   final FlutterLocalNotificationsPlugin _notificationsPlugin = 
       FlutterLocalNotificationsPlugin();
   
-  // Clé pour stocker l'heure de la notification
+  // Cle pour stocker l'heure de la notification
   static const String _notificationTimeKey = 'notification_time';
   
-  // Heure par défaut : 20h00
+  // Heure par defaut : 20h00
   static const int _defaultHour = 20;
   static const int _defaultMinute = 0;
 
   Future<void> init() async {
-    // Initialiser les données de timezone
+    // Initialiser les donnees de timezone
     tz.initializeTimeZones();
     
     // Obtenir le fuseau horaire local
@@ -42,7 +42,7 @@ class NotificationService {
       requestBadgePermission: true,
       requestSoundPermission: true,
       onDidReceiveLocalNotification: (int id, String? title, String? body, String? payload) async {
-        // Gérer la réception de la notification
+        // Gerer la reception de la notification
       },
     );
 
@@ -56,7 +56,7 @@ class NotificationService {
     await _notificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: (NotificationResponse response) async {
-        // Gérer le clic sur la notification
+        // Gerer le clic sur la notification
         _handleNotificationClick(response.payload);
       },
     );
@@ -70,15 +70,15 @@ class NotificationService {
 
   Future<String> _getLocalTimeZone() async {
     // Pour Android, on peut obtenir le timezone directement
-    // Pour iOS, on utilise une approche différente
+    // Pour iOS, on utilise une approche differente
     try {
       final DateTime now = DateTime.now();
       final String timeZoneName = now.timeZoneName;
       
-      // Mapper le nom du timezone à un identifiant tz
-      // Cela peut nécessiter une correspondance personnalisée
-      // Pour simplifier, on utilise le timezone par défaut
-      return 'Europe/Paris'; // Par défaut pour la France
+      // Mapper le nom du timezone a un identifiant tz
+      // Cela peut necessiter une correspondance personnalisee
+      // Pour simplifier, on utilise le timezone par defaut
+      return 'Europe/Paris'; // Par defaut pour la France
     } catch (e) {
       return 'Europe/Paris';
     }
@@ -99,7 +99,7 @@ class NotificationService {
   }
 
   Future<void> _scheduleDailyNotification() async {
-    // Obtenir l'heure de notification depuis les préférences
+    // Obtenir l'heure de notification depuis les preferences
     final prefs = await SharedPreferences.getInstance();
     final String? savedTime = prefs.getString(_notificationTimeKey);
     
@@ -112,12 +112,12 @@ class NotificationService {
         minute: int.parse(parts[1]),
       );
     } else {
-      // Heure par défaut : 20h00
+      // Heure par defaut : 20h00
       notificationTime = const TimeOfDay(hour: _defaultHour, minute: _defaultMinute);
       await _saveNotificationTime(notificationTime);
     }
 
-    // Planifier la notification pour aujourd'hui à l'heure spécifiée
+    // Planifier la notification pour aujourd'hui a l'heure specifiee
     await _scheduleNotificationAtTime(notificationTime);
   }
 
@@ -131,12 +131,12 @@ class NotificationService {
       time.minute,
     );
 
-    // Si l'heure est déjà passée aujourd'hui, planifier pour demain
+    // Si l'heure est deja passee aujourd'hui, planifier pour demain
     if (scheduledTime.isBefore(now)) {
       scheduledTime.add(const Duration(days: 1));
     }
 
-    // Calculer la différence
+    // Calculer la difference
     final durationUntilNotification = scheduledTime.difference(now);
 
     // Planifier la notification
@@ -169,7 +169,7 @@ class NotificationService {
       matchDateTimeComponents: DateTimeComponents.time,
     );
 
-    debugPrint('Notification planifiée pour ${scheduledTime.toString()}');
+    debugPrint('Notification planifiee pour ${scheduledTime.toString()}');
   }
 
   Future<void> _saveNotificationTime(TimeOfDay time) async {
@@ -206,9 +206,9 @@ class NotificationService {
   }
 
   Future<void> _handleNotificationClick(String? payload) async {
-    debugPrint('Notification cliquée avec payload: $payload');
-    // Ici, on pourrait naviguer vers une page spécifique
-    // Par exemple, ouvrir l'écran d'accueil ou de pratique
+    debugPrint('Notification cliquee avec payload: $payload');
+    // Ici, on pourrait naviguer vers une page specifique
+    // Par exemple, ouvrir l'ecran d'accueil ou de pratique
   }
 
   Future<void> showTestNotification() async {

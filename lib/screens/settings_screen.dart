@@ -50,7 +50,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             _buildNotificationTimeSection(),
             const SizedBox(height: 24),
 
-            // Données
+            // Donnees
             _buildDataSection(),
             const SizedBox(height: 24),
 
@@ -84,7 +84,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             const SizedBox(height: 16),
             SwitchListTile(
               title: const Text('Activer les notifications'),
-              subtitle: const Text('Recevoir un rappel quotidien à 20h00'),
+              subtitle: const Text('Recevoir un rappel quotidien a 20h00'),
               value: _notificationsEnabled,
               onChanged: (value) async {
                 final notificationService = NotificationService();
@@ -120,7 +120,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Choisissez l\'heure à laquelle vous souhaitez recevoir le rappel quotidien.',
+              'Choisissez l\'heure a laquelle vous souhaitez recevoir le rappel quotidien.',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 16),
@@ -170,7 +170,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Heure de notification mise à jour: ${pickedTime.hour}:${pickedTime.minute.toString().padLeft(2, '0')}'),
+          content: Text('Heure de notification mise a jour: ${pickedTime.hour}:${pickedTime.minute.toString().padLeft(2, '0')}'),
           backgroundColor: AppColors.success,
         ),
       );
@@ -186,25 +186,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Données',
+              'Donnees',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 16),
             
-            // Réinitialiser les données
+            // Reinitialiser les donnees
             OutlinedButton.icon(
               onPressed: () => _showResetDataDialog(),
               icon: const Icon(Icons.refresh, color: AppColors.error),
               label: const Text(
-                'Réinitialiser toutes les données',
+                'Reinitialiser toutes les donnees',
                 style: TextStyle(color: AppColors.error),
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Cela supprimera tous vos vire-langues personnalisés, séries et progression.',
+              'Cela supprimera tous vos vire-langues personnalises, series et progression.',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: Colors.grey,
               ),
@@ -219,9 +219,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final shouldReset = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Réinitialiser les données'),
+        title: const Text('Reinitialiser les donnees'),
         content: const Text(
-          'Êtes-vous sûr de vouloir réinitialiser toutes vos données ? Cette action est irréversible.',
+          'Êtes-vous sûr de vouloir reinitialiser toutes vos donnees ? Cette action est irreversible.',
         ),
         actions: [
           TextButton(
@@ -231,7 +231,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
             style: TextButton.styleFrom(foregroundColor: AppColors.error),
-            child: const Text('Réinitialiser'),
+            child: const Text('Reinitialiser'),
           ),
         ],
       ),
@@ -242,7 +242,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Toutes les données ont été réinitialisées'),
+          content: Text('Toutes les donnees ont ete reinitialisees'),
           backgroundColor: AppColors.success,
         ),
       );
@@ -271,7 +271,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             ListTile(
               leading: const Icon(Icons.developer_mode),
-              title: const Text('Développeur'),
+              title: const Text('Developpeur'),
               trailing: const Text('Nicolous'),
             ),
             ListTile(
@@ -283,7 +283,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Vire-Langues est une application conçue pour vous aider à améliorer votre élocution et votre prononciation grâce à une collection de vire-langues en français.',
+              'Vire-Langues est une application conçue pour vous aider a ameliorer votre elocution et votre prononciation grace a une collection de vire-langues en français.',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],

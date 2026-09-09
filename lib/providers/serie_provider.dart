@@ -3,42 +3,42 @@ import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vire_langues/models/serie.dart';
 
-// Provider pour la boîte Hive des séries
+// Provider pour la boîte Hive des series
 final serieBoxProvider = Provider<Box<Serie>>((ref) {
   return Hive.box<Serie>('series');
 });
 
-// Provider pour la liste de toutes les séries
+// Provider pour la liste de toutes les series
 final seriesProvider = Provider<List<Serie>>((ref) {
   final box = ref.watch(serieBoxProvider);
   return box.values.toList();
 });
 
-// Provider pour les séries personnalisées
+// Provider pour les series personnalisees
 final seriesPersonnaliseesProvider = Provider<List<Serie>>((ref) {
   final series = ref.watch(seriesProvider);
   return series.where((s) => s.estPersonnalisee).toList();
 });
 
-// Provider pour les séries par défaut
+// Provider pour les series par defaut
 final seriesParDefautProvider = Provider<List<Serie>>((ref) {
   final series = ref.watch(seriesProvider);
   return series.where((s) => !s.estPersonnalisee).toList();
 });
 
-// Notifier pour gérer les séries
+// Notifier pour gerer les series
 class SerieNotifier extends StateNotifier<List<Serie>> {
   final Box<Serie> _box;
   
   SerieNotifier(this._box) : super(_box.values.toList());
 
-  // Ajouter une série
+  // Ajouter une serie
   void add(Serie serie) {
     _box.put(serie.id, serie);
     state = _box.values.toList();
   }
 
-  // Mettre à jour une série
+  // Mettre a jour une serie
   void update(Serie serie) {
     _box.put(serie.id, serie.copyWith(
       dateModification: DateTime.now(),
@@ -46,18 +46,18 @@ class SerieNotifier extends StateNotifier<List<Serie>> {
     state = _box.values.toList();
   }
 
-  // Supprimer une série
+  // Supprimer une serie
   void delete(String id) {
     _box.delete(id);
     state = _box.values.toList();
   }
 
-  // Obtenir une série par ID
+  // Obtenir une serie par ID
   Serie? getById(String id) {
     return _box.get(id);
   }
 
-  // Créer une série avec un ID auto-généré
+  // Creer une serie avec un ID auto-genere
   Serie create({
     required String nom,
     required String description,
@@ -76,14 +76,14 @@ class SerieNotifier extends StateNotifier<List<Serie>> {
     return serie;
   }
 
-  // Obtenir les séries contenant un vire-langue spécifique
+  // Obtenir les series contenant un vire-langue specifique
   List<Serie> getSeriesAvecVireLangue(String vireLangueId) {
     return state
         .where((s) => s.vireLangueIds.contains(vireLangueId))
         .toList();
   }
 
-  // Rechercher des séries
+  // Rechercher des series
   List<Serie> search(String query) {
     return state
         .where((s) => 

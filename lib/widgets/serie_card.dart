@@ -21,20 +21,20 @@ class SerieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Obtenir les vire-langues de la série
+    // Obtenir les vire-langues de la serie
     final serieVireLangues = serie.vireLangueIds
         .map((id) => vireLangues.firstWhere((vl) => vl.id == id))
         .where((vl) => vl != null)
         .cast<VireLangue>()
         .toList();
 
-    // Calculer la difficulté moyenne
+    // Calculer la difficulte moyenne
     final avgDifficulty = serieVireLangues.isNotEmpty
         ? serieVireLangues.fold(0, (sum, vl) => sum + vl.difficulte) / serieVireLangues.length
         : 0;
 
     // Calculer le nombre de vire-langues maitrises
-    final masteredCount = 0; // TODO: Implémenter avec les données de progression
+    final masteredCount = 0; // TODO: Implementer avec les donnees de progression
 
     return Card(
       elevation: 2,
@@ -124,7 +124,7 @@ class SerieCard extends StatelessWidget {
                   _buildStatItem(
                     context,
                     _getDifficultyLabel(avgDifficulty),
-                    'Difficulté moyenne',
+                    'Difficulte moyenne',
                     Icons.trending_up,
                     _getDifficultyColor(avgDifficulty),
                   ),
@@ -132,7 +132,7 @@ class SerieCard extends StatelessWidget {
                   _buildStatItem(
                     context,
                     '$masteredCount',
-                    'Maîtrisés',
+                    'Maîtrises',
                     Icons.star,
                     AppColors.success,
                   ),
@@ -140,10 +140,10 @@ class SerieCard extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               
-              // Indicateur de type de série
+              // Indicateur de type de serie
               if (serie.estPersonnalisee) ...[
                 Chip(
-                  label: const Text('Personnalisée'),
+                  label: const Text('Personnalisee'),
                   backgroundColor: AppColors.secondary.withOpacity(0.2),
                   labelStyle: const TextStyle(color: AppColors.secondary),
                   avatar: const Icon(Icons.person, color: AppColors.secondary, size: 16),

@@ -89,7 +89,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                     if (widget.serie != null) ...[
                       const SizedBox(height: 8),
                       Text(
-                        'Série: ${widget.serie!.nom}',
+                        'Serie: ${widget.serie!.nom}',
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -155,7 +155,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Répétitions: ${progression.nombreRepetitions}',
+                'Repetitions: ${progression.nombreRepetitions}',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 16),
@@ -174,7 +174,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
             OutlinedButton.icon(
               onPressed: () => _startTimedPractice(),
               icon: const Icon(Icons.timer),
-              label: const Text('Pratique chronométrée'),
+              label: const Text('Pratique chronometree'),
               style: OutlinedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
               ),
@@ -215,12 +215,12 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Répétitions: $_repetitions',
+              'Repetitions: $_repetitions',
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 24),
             
-            // Vire-langue à répéter
+            // Vire-langue a repeter
             Text(
               widget.vireLangue.texte,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -243,7 +243,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                     });
                   },
                   icon: const Icon(Icons.add),
-                  tooltip: 'Compter une répétition',
+                  tooltip: 'Compter une repetition',
                   style: IconButton.styleFrom(
                     backgroundColor: AppColors.success,
                     foregroundColor: Colors.white,
@@ -291,7 +291,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
               children: [
                 _buildStatItem('Niveau', progression?.niveau.toString() ?? '0', Icons.star),
                 _buildStatItem('Score', '${progression?.score ?? 0}%', Icons.analytics),
-                _buildStatItem('Répétitions', progression?.nombreRepetitions.toString() ?? '0', Icons.repeat),
+                _buildStatItem('Repetitions', progression?.nombreRepetitions.toString() ?? '0', Icons.repeat),
                 if (_startTime != null && _endTime != null) ...[
                   _buildStatItem('Temps', _formatDuration(_endTime!.difference(_startTime!)), Icons.timer),
                 ],
@@ -318,7 +318,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
             ),
             const SizedBox(height: 8),
             StarRating(
-              rating: _score ~/ 20, // Convertir le score (0-100) en étoiles (0-5)
+              rating: _score ~/ 20, // Convertir le score (0-100) en etoiles (0-5)
               color: AppColors.warning,
               size: 32,
               onRatingChanged: (rating) {
@@ -381,12 +381,12 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
       _repetitions = 0;
     });
     
-    // Démarrer un minuteur pour rappeler à l'utilisateur
+    // Demarrer un minuteur pour rappeler a l'utilisateur
     Future.delayed(const Duration(minutes: 1), () {
       if (mounted && _isPracticing) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Continuez à pratiquer !'),
+            content: Text('Continuez a pratiquer !'),
             duration: Duration(seconds: 2),
           ),
         );
@@ -402,7 +402,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   }
 
   void _saveProgress() {
-    // Mettre à jour la progression
+    // Mettre a jour la progression
     ref.read(progressionNotifierProvider.notifier).createOrUpdate(
       vireLangueId: widget.vireLangue.id,
       nombreRepetitions: _repetitions,
@@ -413,7 +413,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     // Afficher un message de confirmation
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Progression enregistrée: $_score%'),
+        content: Text('Progression enregistree: $_score%'),
         backgroundColor: AppColors.success,
         action: SnackBarAction(
           label: 'OK',
@@ -422,7 +422,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
       ),
     );
 
-    // Retourner à l'écran précédent
+    // Retourner a l'ecran precedent
     Navigator.pop(context);
   }
 

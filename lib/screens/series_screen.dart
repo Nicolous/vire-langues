@@ -25,7 +25,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Séries'),
+        title: const Text('Series'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
@@ -38,10 +38,10 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Filtre par catégorie si sélectionné
+            // Filtre par categorie si selectionne
             if (widget.selectedCategory != null) ...[
               Chip(
-                label: Text('Catégorie: ${widget.selectedCategory}'),
+                label: Text('Categorie: ${widget.selectedCategory}'),
                 onDeleted: () {
                   Navigator.pushReplacement(
                     context,
@@ -54,10 +54,10 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
               const SizedBox(height: 16),
             ],
             
-            // Séries par défaut
+            // Series par defaut
             if (series.isNotEmpty) ...[
               Text(
-                'Séries par défaut',
+                'Series par defaut',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -76,9 +76,9 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
               const SizedBox(height: 24),
             ],
             
-            // Séries personnalisées
+            // Series personnalisees
             Text(
-              'Vos Séries Personnalisées',
+              'Vos Series Personnalisees',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -99,12 +99,12 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Aucune série personnalisée',
+                        'Aucune serie personnalisee',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Créez votre première série pour organiser vos vire-langues préférés.',
+                        'Creez votre première serie pour organiser vos vire-langues preferes.',
                         style: Theme.of(context).textTheme.bodyMedium,
                         textAlign: TextAlign.center,
                       ),
@@ -112,7 +112,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                       ElevatedButton.icon(
                         onPressed: () => _showCreateSerieDialog(context),
                         icon: const Icon(Icons.add),
-                        label: const Text('Créer une série'),
+                        label: const Text('Creer une serie'),
                       ),
                     ],
                   ),
@@ -151,7 +151,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     final shouldDelete = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Supprimer la série'),
+        title: const Text('Supprimer la serie'),
         content: Text('Êtes-vous sûr de vouloir supprimer "${serie.nom}" ?'),
         actions: [
           TextButton(
@@ -171,7 +171,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
       ref.read(serieNotifierProvider.notifier).delete(serie.id);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Série "${serie.nom}" supprimée'),
+          content: Text('Serie "${serie.nom}" supprimee'),
           backgroundColor: AppColors.success,
         ),
       );
@@ -188,7 +188,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
-          title: const Text('Créer une nouvelle série'),
+          title: const Text('Creer une nouvelle serie'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -196,7 +196,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                 TextField(
                   controller: nomController,
                   decoration: const InputDecoration(
-                    labelText: 'Nom de la série',
+                    labelText: 'Nom de la serie',
                     hintText: 'Ex: Mes favoris',
                   ),
                 ),
@@ -205,13 +205,13 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                   controller: descriptionController,
                   decoration: const InputDecoration(
                     labelText: 'Description',
-                    hintText: 'Description de la série',
+                    hintText: 'Description de la serie',
                   ),
                   maxLines: 2,
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Sélectionnez les vire-langues',
+                  'Selectionnez les vire-langues',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 const SizedBox(height: 8),
@@ -255,7 +255,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                       if (nomController.text.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Veuillez entrer un nom pour la série'),
+                            content: Text('Veuillez entrer un nom pour la serie'),
                             backgroundColor: AppColors.error,
                           ),
                         );
@@ -272,12 +272,12 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                       Navigator.of(context).pop();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Série créée avec succès !'),
+                          content: Text('Serie creee avec succès !'),
                           backgroundColor: AppColors.success,
                         ),
                       );
                     },
-              child: const Text('Créer'),
+              child: const Text('Creer'),
             ),
           ],
         ),
@@ -295,7 +295,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
-          title: const Text('Modifier la série'),
+          title: const Text('Modifier la serie'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -303,7 +303,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                 TextField(
                   controller: nomController,
                   decoration: const InputDecoration(
-                    labelText: 'Nom de la série',
+                    labelText: 'Nom de la serie',
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -316,7 +316,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Sélectionnez les vire-langues',
+                  'Selectionnez les vire-langues',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 const SizedBox(height: 8),
@@ -368,7 +368,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                       Navigator.of(context).pop();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Série modifiée avec succès !'),
+                          content: Text('Serie modifiee avec succès !'),
                           backgroundColor: AppColors.success,
                         ),
                       );
@@ -410,7 +410,7 @@ class _SerieDetailScreenState extends ConsumerState<SerieDetailScreen> {
         ),
         body: Center(
           child: Text(
-            'Aucun vire-langue dans cette série',
+            'Aucun vire-langue dans cette serie',
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
@@ -438,7 +438,7 @@ class _SerieDetailScreenState extends ConsumerState<SerieDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Progression dans la série
+            // Progression dans la serie
             LinearProgressIndicator(
               value: (_currentIndex + 1) / serieVireLangues.length,
               backgroundColor: Colors.grey[200],
@@ -489,10 +489,10 @@ class _SerieDetailScreenState extends ConsumerState<SerieDetailScreen> {
               ],
             ),
 
-            // Liste des vire-langues de la série
+            // Liste des vire-langues de la serie
             const SizedBox(height: 24),
             Text(
-              'Tous les vire-langues de cette série',
+              'Tous les vire-langues de cette serie',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

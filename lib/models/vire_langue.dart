@@ -31,12 +31,12 @@ class VireLangue {
     DateTime? dateCreation,
   }) : dateCreation = dateCreation ?? DateTime.now();
 
-  // Niveaux de difficulté
+  // Niveaux de difficulte
   static const int facile = 1;
   static const int moyen = 2;
   static const int difficile = 3;
 
-  // Catégories par défaut
+  // Categories par defaut
   static const List<String> categories = [
     'Classiques',
     'Drôles',
