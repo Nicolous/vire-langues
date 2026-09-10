@@ -72,14 +72,14 @@ android {
 
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0"
+    implementation "androidx.multidex:multidex:2.0.1"
+}
+
 flutter {
     source '../..'
     android {
         embeddingVersion '2'
     }
-}
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0"
-    implementation "androidx.multidex:multidex:2.0.1"
 }
