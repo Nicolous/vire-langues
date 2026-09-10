@@ -46,6 +46,8 @@ jobs:
 
       - name: Build Android APK
         run: flutter build apk --release --no-tree-shake-icons
+        env:
+          FLUTTER_ANDROID_EMBEDDING_VERSION: '2'
 
       - name: Rename APK
         run: |
