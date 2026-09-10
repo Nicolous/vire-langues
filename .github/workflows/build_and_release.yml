@@ -45,7 +45,7 @@ jobs:
         run: flutter pub run build_runner build
 
       - name: Build Android APK
-        run: flutter build apk --release --no-tree-shake-icons
+        run: flutter build apk --release --no-tree-shake-icons --android-embedding-version=2
 
       - name: Rename APK
         run: |
