@@ -37,8 +37,6 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 android {
     namespace 'com.nicolous.virelangues'
     compileSdkVersion flutter.compileSdkVersion
@@ -71,6 +69,8 @@ android {
         }
     }
 }
+
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0"
