@@ -34,9 +34,9 @@ jobs:
 
       - name: Force Android v2 embedding
         run: |
-          echo "flutter.android.embeddingVersion=2" >> .flutter_settings
           mkdir -p .flutter
-          echo "android.embeddingVersion=2" >> .flutter/settings
+          echo "android.embeddingVersion=2" > .flutter/settings
+          echo "flutter.android.embeddingVersion=2" >> .flutter/settings
 
       - name: Install dependencies
         run: flutter pub get
@@ -45,7 +45,7 @@ jobs:
         run: flutter pub run build_runner build
 
       - name: Build Android APK
-        run: flutter build apk --release --no-tree-shake-icons --android-embedding-version=2
+        run: flutter build apk --release --no-tree-shake-icons
 
       - name: Rename APK
         run: |
@@ -90,9 +90,9 @@ jobs:
 
       - name: Force Android v2 embedding
         run: |
-          echo "flutter.android.embeddingVersion=2" >> .flutter_settings
           mkdir -p .flutter
-          echo "android.embeddingVersion=2" >> .flutter/settings
+          echo "android.embeddingVersion=2" > .flutter/settings
+          echo "flutter.android.embeddingVersion=2" >> .flutter/settings
 
       - name: Install dependencies
         run: flutter pub get
