@@ -1,2 +1,2 @@
-android.embeddingVersion=2
-flutter.android.embeddingVersion=2
+android:
+  embeddingVersion: 2
